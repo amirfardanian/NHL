@@ -20,7 +20,7 @@ import requests
 SURVEY_ID = '2412130'
 CROSSTAB_ID = 'gpmvpyyy5jdz3e2g'
 LAYOUT_ID = '85875'
-MAIN_FOLDER = r'Z:\Projects\Uitgekookt\24102024UIT005 Reality Analytics 2025\Data\0. Weekly cleaning'
+MAIN_FOLDER = r'.\Data\0. Weekly cleaning'
 
 # OFFSET specifies the number of weeks to adjust within the weekly cleaning cycle.
 # For example:
@@ -677,7 +677,7 @@ def export_weekly_data(headers, last_week, offset=OFFSET-1):
         segment = last_week[-2:]  # Extract the last two digits (week number)
 
         # Construct the API URL
-        url = f"https://dvj.decipherinc.com/api/v1/surveys/selfserve/2144/{SURVEY_ID}/data?format=tab&layout={LAYOUT_ID}&cond=xt:{CROSSTAB_ID}:{segment}"
+        url = f"./{SURVEY_ID}/data?format=tab&layout={LAYOUT_ID}&cond=xt:{CROSSTAB_ID}:{segment}"
         print(f"Fetching data for segment: {segment} (URL: {url})")
 
         # Fetch data from the API
@@ -721,7 +721,7 @@ def main():
 
     print(f"Columns to Check: {columns_to_check}")
 
-    headers = {'x-apikey': "ffcgk30kta73f1fs2dufrz634u4k7djxj9v3vwv071yrnkzptwregpaqask5zrcy"}
+    headers = {'x-apikey': "API_KEY_PLACEHOLDER"}
 
     last_week = get_iso_week(offset=OFFSET-1)
     segment = last_week[-2:]
